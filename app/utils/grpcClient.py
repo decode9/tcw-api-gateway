@@ -12,11 +12,11 @@ class grpcClient(JsonResponse):
 
         try:
 
-            request = self.prototype.Game(**Data)
+            request = self.prototype.Data(**Data)
 
-            stub = self.protoRPC.VideogameStub(self.channel)
+            stub = self.protoRPC.Stub(self.channel)
 
-            response = stub.SaveVideogame(request)
+            response = stub.SaveData(request)
 
             return response
 
@@ -32,16 +32,14 @@ class grpcClient(JsonResponse):
         try:
 
             request = self.prototype.Empty()
-
-            stub = self.protoRPC.VideogameStub(self.channel)
-
-            response = stub.GetVideogame(request)
+            stub = self.protoRPC.Stub(self.channel)
+            response = stub.GetData(request)
 
             return response
         except grpc.RpcError as e:
             print(e.details())
             status_code = e.code()
-            self.throw400(status_code.name)
+            self.throwException(status_code.name)
         except ValueError:
 
-            self.throw400("value_error")
+            self.throwException("value_error")

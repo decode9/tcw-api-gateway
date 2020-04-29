@@ -5,6 +5,7 @@ from flask_assets import Environment, Bundle
 from flask import got_request_exception
 from .components import routeHandler
 from .extAPI import ExtendedAPI
+from .routes import ROUTING
 
 # Define the WSGI application object
 app = Flask(__name__)
@@ -36,7 +37,7 @@ def not_found(error):
 # Import a module / component using its blueprint handler variable (mod_auth)
 #from app.mod_auth.controllers import mod_auth as auth_module
 
-
+routeHandler.ROUTING = ROUTING
 # Register blueprint(s)
 api.add_resource(routeHandler, '/api/<route>')
 
