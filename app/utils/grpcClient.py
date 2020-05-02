@@ -12,6 +12,8 @@ class grpcClient(JsonResponse):
 
         try:
 
+            print(Data)
+
             request = self.prototype.Data(**Data)
 
             stub = self.protoRPC.Stub(self.channel)
@@ -43,3 +45,45 @@ class grpcClient(JsonResponse):
         except ValueError:
 
             self.throwException("value_error")
+
+    def put(self, **Data):
+
+        try:
+
+            print(Data)
+
+            request = self.prototype.Data(**Data)
+
+            stub = self.protoRPC.Stub(self.channel)
+
+            response = stub.UpdateData(request)
+
+            return response
+
+        except grpc.RpcError as e:
+            print(e.details())
+            status_code = e.code()
+            self.throwException(status_code.name)
+        except ValueError:
+            self.throwException('value_error')
+    
+    def delete(self, **Data):
+
+        try:
+
+            print(Data)
+
+            request = self.prototype.Data(**Data)
+
+            stub = self.protoRPC.Stub(self.channel)
+
+            response = stub.DeleteData(request)
+
+            return response
+
+        except grpc.RpcError as e:
+            print(e.details())
+            status_code = e.code()
+            self.throwException(status_code.name)
+        except ValueError:
+            self.throwException('value_error')

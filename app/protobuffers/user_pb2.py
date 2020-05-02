@@ -18,10 +18,52 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=b'\n\nuser.proto\"\x07\n\x05\x45mpty\"g\n\x04\x44\x61ta\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x10\n\x08lastname\x18\x03 \x01(\t\x12\x16\n\x0eidentification\x18\x04 \x01(\t\x12\x1b\n\x13type_identification\x18\x05 \x01(\x05\"#\n\x0c\x44\x61taResponse\x12\x13\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x05.Data\"+\n\x14\x44\x61taMultipleResponse\x12\x13\n\x04\x64\x61ta\x18\x01 \x03(\x0b\x32\x05.Data2\xa4\x01\n\rDataProcessor\x12\"\n\x08SaveData\x12\x05.Data\x1a\r.DataResponse\"\x00\x12*\n\x07GetData\x12\x06.Empty\x1a\x15.DataMultipleResponse\"\x00\x12$\n\nUpdateData\x12\x05.Data\x1a\r.DataResponse\"\x00\x12\x1d\n\nDeleteData\x12\x05.Data\x1a\x06.Empty\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\nuser.proto\"\x07\n\x05\x45mpty\"\xbc\x05\n\x04\x44\x61ta\x12\x0b\n\x03_id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x10\n\x08lastname\x18\x03 \x01(\t\x12\x16\n\x0eidentification\x18\x04 \x01(\t\x12\x1b\n\x13type_identification\x18\x05 \x01(\x05\x12\x14\n\x0cphone_number\x18\x06 \x01(\t\x12 \n\x08\x64ocument\x18\x07 \x03(\x0b\x32\x0e.Data.Document\x12\"\n\tdirectory\x18\x08 \x01(\x0b\x32\x0f.Data.Directory\x12\x1d\n\x06option\x18\t \x01(\x0b\x32\r.Data.Options\x1a\xec\x01\n\x08\x44ocument\x12\x32\n\rdocument_type\x18\x01 \x01(\x0e\x32\x1b.Data.Document.DocumentType\x12\x10\n\x08\x64ocument\x18\x02 \x01(\t\"\x99\x01\n\x0c\x44ocumentType\x12\x0b\n\x07GENERAL\x10\x00\x12\n\n\x06SELFIE\x10\x01\x12\x19\n\x15IDENTIFICATION_SELFIE\x10\x02\x12\x12\n\x0eIDENTIFICATION\x10\x03\x12\x13\n\x0fRESIDENCE_PROOF\x10\x04\x12\x16\n\x12INCOMING_STATEMENT\x10\x05\x12\x14\n\x10JURIDIC_DOCUMENT\x10\x06\x1a\xb8\x01\n\tDirectory\x12*\n\x08\x66\x61vorite\x18\x01 \x03(\x0b\x32\x18.Data.Directory.Favorite\x12(\n\x07\x61\x63\x63ount\x18\x02 \x03(\x0b\x32\x17.Data.Directory.Account\x1a*\n\x08\x46\x61vorite\x12\r\n\x05label\x18\x01 \x01(\t\x12\x0f\n\x07\x61\x64\x64ress\x18\x02 \x01(\t\x1a)\n\x07\x41\x63\x63ount\x12\r\n\x05label\x18\x01 \x01(\t\x12\x0f\n\x07\x61\x64\x64ress\x18\x02 \x01(\t\x1a-\n\x07Options\x12\x10\n\x08language\x18\x01 \x01(\t\x12\x10\n\x08\x63urrency\x18\x02 \x01(\t\"#\n\x0c\x44\x61taResponse\x12\x13\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x05.Data\"+\n\x14\x44\x61taMultipleResponse\x12\x13\n\x04\x64\x61ta\x18\x01 \x03(\x0b\x32\x05.Data2\xa4\x01\n\rDataProcessor\x12\"\n\x08SaveData\x12\x05.Data\x1a\r.DataResponse\"\x00\x12*\n\x07GetData\x12\x06.Empty\x1a\x15.DataMultipleResponse\"\x00\x12$\n\nUpdateData\x12\x05.Data\x1a\r.DataResponse\"\x00\x12\x1d\n\nDeleteData\x12\x05.Data\x1a\x06.Empty\"\x00\x62\x06proto3'
 )
 
 
+
+_DATA_DOCUMENT_DOCUMENTTYPE = _descriptor.EnumDescriptor(
+  name='DocumentType',
+  full_name='Data.Document.DocumentType',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='GENERAL', index=0, number=0,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='SELFIE', index=1, number=1,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='IDENTIFICATION_SELFIE', index=2, number=2,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='IDENTIFICATION', index=3, number=3,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='RESIDENCE_PROOF', index=4, number=4,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='INCOMING_STATEMENT', index=5, number=5,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='JURIDIC_DOCUMENT', index=6, number=6,
+      serialized_options=None,
+      type=None),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=337,
+  serialized_end=490,
+)
+_sym_db.RegisterEnumDescriptor(_DATA_DOCUMENT_DOCUMENTTYPE)
 
 
 _EMPTY = _descriptor.Descriptor(
@@ -48,6 +90,192 @@ _EMPTY = _descriptor.Descriptor(
 )
 
 
+_DATA_DOCUMENT = _descriptor.Descriptor(
+  name='Document',
+  full_name='Data.Document',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='document_type', full_name='Data.Document.document_type', index=0,
+      number=1, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='document', full_name='Data.Document.document', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+    _DATA_DOCUMENT_DOCUMENTTYPE,
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=254,
+  serialized_end=490,
+)
+
+_DATA_DIRECTORY_FAVORITE = _descriptor.Descriptor(
+  name='Favorite',
+  full_name='Data.Directory.Favorite',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='label', full_name='Data.Directory.Favorite.label', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='address', full_name='Data.Directory.Favorite.address', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=592,
+  serialized_end=634,
+)
+
+_DATA_DIRECTORY_ACCOUNT = _descriptor.Descriptor(
+  name='Account',
+  full_name='Data.Directory.Account',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='label', full_name='Data.Directory.Account.label', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='address', full_name='Data.Directory.Account.address', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=636,
+  serialized_end=677,
+)
+
+_DATA_DIRECTORY = _descriptor.Descriptor(
+  name='Directory',
+  full_name='Data.Directory',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='favorite', full_name='Data.Directory.favorite', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='account', full_name='Data.Directory.account', index=1,
+      number=2, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[_DATA_DIRECTORY_FAVORITE, _DATA_DIRECTORY_ACCOUNT, ],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=493,
+  serialized_end=677,
+)
+
+_DATA_OPTIONS = _descriptor.Descriptor(
+  name='Options',
+  full_name='Data.Options',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='language', full_name='Data.Options.language', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='currency', full_name='Data.Options.currency', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=679,
+  serialized_end=724,
+)
+
 _DATA = _descriptor.Descriptor(
   name='Data',
   full_name='Data',
@@ -56,9 +284,9 @@ _DATA = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='id', full_name='Data.id', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
+      name='_id', full_name='Data._id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
@@ -90,10 +318,38 @@ _DATA = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='phone_number', full_name='Data.phone_number', index=5,
+      number=6, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='document', full_name='Data.document', index=6,
+      number=7, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='directory', full_name='Data.directory', index=7,
+      number=8, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='option', full_name='Data.option', index=8,
+      number=9, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
-  nested_types=[],
+  nested_types=[_DATA_DOCUMENT, _DATA_DIRECTORY, _DATA_OPTIONS, ],
   enum_types=[
   ],
   serialized_options=None,
@@ -102,8 +358,8 @@ _DATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23,
-  serialized_end=126,
+  serialized_start=24,
+  serialized_end=724,
 )
 
 
@@ -133,8 +389,8 @@ _DATARESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=128,
-  serialized_end=163,
+  serialized_start=726,
+  serialized_end=761,
 )
 
 
@@ -164,10 +420,22 @@ _DATAMULTIPLERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=165,
-  serialized_end=208,
+  serialized_start=763,
+  serialized_end=806,
 )
 
+_DATA_DOCUMENT.fields_by_name['document_type'].enum_type = _DATA_DOCUMENT_DOCUMENTTYPE
+_DATA_DOCUMENT.containing_type = _DATA
+_DATA_DOCUMENT_DOCUMENTTYPE.containing_type = _DATA_DOCUMENT
+_DATA_DIRECTORY_FAVORITE.containing_type = _DATA_DIRECTORY
+_DATA_DIRECTORY_ACCOUNT.containing_type = _DATA_DIRECTORY
+_DATA_DIRECTORY.fields_by_name['favorite'].message_type = _DATA_DIRECTORY_FAVORITE
+_DATA_DIRECTORY.fields_by_name['account'].message_type = _DATA_DIRECTORY_ACCOUNT
+_DATA_DIRECTORY.containing_type = _DATA
+_DATA_OPTIONS.containing_type = _DATA
+_DATA.fields_by_name['document'].message_type = _DATA_DOCUMENT
+_DATA.fields_by_name['directory'].message_type = _DATA_DIRECTORY
+_DATA.fields_by_name['option'].message_type = _DATA_OPTIONS
 _DATARESPONSE.fields_by_name['data'].message_type = _DATA
 _DATAMULTIPLERESPONSE.fields_by_name['data'].message_type = _DATA
 DESCRIPTOR.message_types_by_name['Empty'] = _EMPTY
@@ -184,11 +452,51 @@ Empty = _reflection.GeneratedProtocolMessageType('Empty', (_message.Message,), {
 _sym_db.RegisterMessage(Empty)
 
 Data = _reflection.GeneratedProtocolMessageType('Data', (_message.Message,), {
+
+  'Document' : _reflection.GeneratedProtocolMessageType('Document', (_message.Message,), {
+    'DESCRIPTOR' : _DATA_DOCUMENT,
+    '__module__' : 'user_pb2'
+    # @@protoc_insertion_point(class_scope:Data.Document)
+    })
+  ,
+
+  'Directory' : _reflection.GeneratedProtocolMessageType('Directory', (_message.Message,), {
+
+    'Favorite' : _reflection.GeneratedProtocolMessageType('Favorite', (_message.Message,), {
+      'DESCRIPTOR' : _DATA_DIRECTORY_FAVORITE,
+      '__module__' : 'user_pb2'
+      # @@protoc_insertion_point(class_scope:Data.Directory.Favorite)
+      })
+    ,
+
+    'Account' : _reflection.GeneratedProtocolMessageType('Account', (_message.Message,), {
+      'DESCRIPTOR' : _DATA_DIRECTORY_ACCOUNT,
+      '__module__' : 'user_pb2'
+      # @@protoc_insertion_point(class_scope:Data.Directory.Account)
+      })
+    ,
+    'DESCRIPTOR' : _DATA_DIRECTORY,
+    '__module__' : 'user_pb2'
+    # @@protoc_insertion_point(class_scope:Data.Directory)
+    })
+  ,
+
+  'Options' : _reflection.GeneratedProtocolMessageType('Options', (_message.Message,), {
+    'DESCRIPTOR' : _DATA_OPTIONS,
+    '__module__' : 'user_pb2'
+    # @@protoc_insertion_point(class_scope:Data.Options)
+    })
+  ,
   'DESCRIPTOR' : _DATA,
   '__module__' : 'user_pb2'
   # @@protoc_insertion_point(class_scope:Data)
   })
 _sym_db.RegisterMessage(Data)
+_sym_db.RegisterMessage(Data.Document)
+_sym_db.RegisterMessage(Data.Directory)
+_sym_db.RegisterMessage(Data.Directory.Favorite)
+_sym_db.RegisterMessage(Data.Directory.Account)
+_sym_db.RegisterMessage(Data.Options)
 
 DataResponse = _reflection.GeneratedProtocolMessageType('DataResponse', (_message.Message,), {
   'DESCRIPTOR' : _DATARESPONSE,
@@ -212,8 +520,8 @@ _DATAPROCESSOR = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=211,
-  serialized_end=375,
+  serialized_start=809,
+  serialized_end=973,
   methods=[
   _descriptor.MethodDescriptor(
     name='SaveData',
