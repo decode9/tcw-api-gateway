@@ -10,14 +10,20 @@ class routeHandler(Resource, JsonResponse):
 
     def operation(self, url, method):
         try:
+            print('Enter Routing')
             ROUTING = self.ROUTING
 
             for route in ROUTING:
+                print('Looping Routing')
                 if route == url:
+
+                    print('Start Client')
 
                     client = grpcClient(
                         ROUTING[route]['PROTO'], ROUTING[route]['PROTO_RPC'], ROUTING[route]['HOST']
                     )
+
+                    print('Get Client')
 
                     if method == 'GET':
                         response = client.get()
@@ -60,6 +66,7 @@ class routeHandler(Resource, JsonResponse):
 
     def get(self, route):
         try:
+            print('enter get function')
             return self.operation(route, 'GET')
         except:
             raise

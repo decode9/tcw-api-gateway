@@ -8,7 +8,7 @@ class grpcClient(JsonResponse):
         self.protoRPC = protRPC
         self.channel = grpc.insecure_channel(host)
 
-    def save(self, **Data):
+    def post(self, **Data):
 
         try:
 
@@ -16,9 +16,9 @@ class grpcClient(JsonResponse):
 
             request = self.prototype.Data(**Data)
 
-            stub = self.protoRPC.Stub(self.channel)
+            stub = self.protoRPC.DataProcessorStub(self.channel)
 
-            response = stub.SaveData(request)
+            response = stub.PostData(request)
 
             return response
 
@@ -32,11 +32,15 @@ class grpcClient(JsonResponse):
     def get(self):
 
         try:
-
+            print('Make Request')
             request = self.prototype.Empty()
-            stub = self.protoRPC.Stub(self.channel)
-            response = stub.GetData(request)
+            
+            print('Sending Request')
+            stub = self.protoRPC.DataProcessorStub(self.channel)
+            print('Make Stub')
 
+            response = stub.GetData(request)
+            print('Return Response')
             return response
         except grpc.RpcError as e:
             print(e.details())
@@ -54,9 +58,9 @@ class grpcClient(JsonResponse):
 
             request = self.prototype.Data(**Data)
 
-            stub = self.protoRPC.Stub(self.channel)
+            stub = self.protoRPC.DataProcessorStub(self.channel)
 
-            response = stub.UpdateData(request)
+            response = stub.PutData(request)
 
             return response
 
@@ -75,7 +79,7 @@ class grpcClient(JsonResponse):
 
             request = self.prototype.Data(**Data)
 
-            stub = self.protoRPC.Stub(self.channel)
+            stub = self.protoRPC.DataProcessorStub(self.channel)
 
             response = stub.DeleteData(request)
 
