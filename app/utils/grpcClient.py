@@ -1,6 +1,7 @@
 import grpc
 from .jsonResponse import JsonResponse
 
+
 class grpcClient(JsonResponse):
 
     def __init__(self, prot, protRPC, host):
@@ -29,24 +30,26 @@ class grpcClient(JsonResponse):
         except ValueError:
             self.throwException('value_error')
 
-    def get(self):
+    def get(self, **data):
 
         try:
-            print('Make Request')
-            request = self.prototype.Empty()
-            
-            print('Sending Request')
-            stub = self.protoRPC.DataProcessorStub(self.channel)
-            print('Make Stub')
 
-            response = stub.GetData(request)
-            print('Return Response')
+            request = self.prototype.Empty()
+            metadata = []
+            if data['authorization']:
+                metadata.append(('access_token', data['authorization']))
+
+            stub = self.protoRPC.DataProcessorStub(self.channel)
+
+            response = stub.GetData(request=request, metadata=metadata)
+
             return response
         except grpc.RpcError as e:
             print(e.details())
             status_code = e.code()
             self.throwException(status_code.name)
-        except ValueError:
+        except ValueError as e:
+            print(e)
 
             self.throwException("value_error")
 
@@ -70,7 +73,7 @@ class grpcClient(JsonResponse):
             self.throwException(status_code.name)
         except ValueError:
             self.throwException('value_error')
-    
+
     def delete(self, **Data):
 
         try:

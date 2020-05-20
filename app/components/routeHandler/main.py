@@ -12,6 +12,9 @@ class routeHandler(Resource, JsonResponse):
         try:
             print('Enter Routing')
             ROUTING = self.ROUTING
+            authorization = None
+            if 'Authorization' in request.headers:
+                authorization = request.headers['Authorization']
 
             for route in ROUTING:
                 print('Looping Routing')
@@ -26,7 +29,7 @@ class routeHandler(Resource, JsonResponse):
                     print('Get Client')
 
                     if method == 'GET':
-                        response = client.get()
+                        response = client.get(authorization=authorization)
 
                     if method == 'POST':
 
@@ -36,7 +39,7 @@ class routeHandler(Resource, JsonResponse):
                         # if not(form.is_valid()):
                         # self.throwException(form.errors)
 
-                        response = client.save(**data)
+                        response = client.post(**data)
 
                     if method == 'PUT':
 
