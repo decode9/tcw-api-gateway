@@ -15,10 +15,7 @@ assets = Environment(app)
 assets.url = app.static_url_path
 assets.url = app.static_url_path
 assets.directory = app.static_folder
-assets.append_path('assets')
-scss = Bundle('assets/main.scss', filters='pyscss', output='main.css')
 
-assets.register('scss_all', scss)
 # Define the REST API
 api = ExtendedAPI(app)
 

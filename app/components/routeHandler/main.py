@@ -16,52 +16,51 @@ class routeHandler(Resource, JsonResponse):
             if 'Authorization' in request.headers:
                 authorization = request.headers['Authorization']
 
-            for route in ROUTING:
-                print('Looping Routing')
-                if route == url:
+            print('VERIFY ROUTE')
+            if url in ROUTING:
 
-                    print('Start Client')
+                print('Start Client')
 
-                    client = grpcClient(
-                        ROUTING[route]['PROTO'], ROUTING[route]['PROTO_RPC'], ROUTING[route]['HOST']
-                    )
+                client = grpcClient(
+                    ROUTING[url]['PROTO'], ROUTING[url]['PROTO_RPC'], ROUTING[url]['HOST']
+                )
 
-                    print('Get Client')
+                print('Get Client')
 
-                    if method == 'GET':
-                        response = client.get(authorization=authorization)
+                if method == 'GET':
+                    response = client.get(authorization=authorization)
 
-                    if method == 'POST':
+                if method == 'POST':
 
-                        data = json.loads(request.data.decode())
+                    data = json.loads(request.data.decode())
 
-                        #form = ROUTING[route]['VALIDATOR'](request.data)
-                        # if not(form.is_valid()):
-                        # self.throwException(form.errors)
+                    #form = ROUTING[route]['VALIDATOR'](request.data)
+                    # if not(form.is_valid()):
+                    # self.throwException(form.errors)
 
-                        response = client.post(**data)
+                    response = client.post(**data)
 
-                    if method == 'PUT':
+                if method == 'PUT':
 
-                        data = json.loads(request.data.decode())
+                    data = json.loads(request.data.decode())
 
-                        #form = ROUTING[route]['VALIDATOR'](request.data)
-                        # if not(form.is_valid()):
-                        # self.throwException(form.errors)
+                    #form = ROUTING[route]['VALIDATOR'](request.data)
+                    # if not(form.is_valid()):
+                    # self.throwException(form.errors)
 
-                        response = client.put(**data)
+                    response = client.put(**data)
 
-                    if method == 'DELETE':
+                if method == 'DELETE':
 
-                        data = json.loads(request.data.decode())
+                    data = json.loads(request.data.decode())
 
-                        #form = ROUTING[route]['VALIDATOR'](request.data)
-                        # if not(form.is_valid()):
-                        # self.throwException(form.errors)
+                    #form = ROUTING[route]['VALIDATOR'](request.data)
+                    # if not(form.is_valid()):
+                    # self.throwException(form.errors)
 
-                        response = client.delete(**data)
+                    response = client.delete(**data)
 
-                    return self.apiResponse(MessageToDict(response))
+                return self.apiResponse(MessageToDict(response))
 
             return self.throwError('no exist')
         except:
