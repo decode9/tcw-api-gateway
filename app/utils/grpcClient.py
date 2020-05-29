@@ -24,7 +24,6 @@ class grpcClient(JsonResponse):
             return response
 
         except grpc.RpcError as e:
-
             ex = e.details()
             print(ex)
             status_code = e.code()
@@ -47,12 +46,12 @@ class grpcClient(JsonResponse):
 
             return response
         except grpc.RpcError as e:
-            print(e.details())
+            ex = e.details()
+            print(ex)
             status_code = e.code()
-            self.throwException(status_code.name)
+            self.throwException(ex)
         except ValueError as e:
             print(e)
-
             self.throwException("value_error")
 
     def put(self, **Data):
@@ -70,9 +69,10 @@ class grpcClient(JsonResponse):
             return response
 
         except grpc.RpcError as e:
-            print(e.details())
+            ex = e.details()
+            print(ex)
             status_code = e.code()
-            self.throwException(status_code.name)
+            self.throwException(ex)
         except ValueError:
             self.throwException('value_error')
 
@@ -91,8 +91,9 @@ class grpcClient(JsonResponse):
             return response
 
         except grpc.RpcError as e:
-            print(e.details())
+            ex = e.details()
+            print(ex)
             status_code = e.code()
-            self.throwException(status_code.name)
+            self.throwException(ex)
         except ValueError:
             self.throwException('value_error')
