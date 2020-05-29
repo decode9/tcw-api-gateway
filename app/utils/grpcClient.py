@@ -1,25 +1,37 @@
 import grpc
 from .jsonResponse import JsonResponse
 
+# Cliente GRPC
+
 
 class grpcClient(JsonResponse):
 
+    # INICIALIZADOR DEL CLIENTE
     def __init__(self, prot, protRPC, host):
         self.prototype = prot
         self.protoRPC = protRPC
         self.channel = grpc.insecure_channel(host)
 
+    # METODO POST GRPC
     def post(self, **Data):
 
         try:
-
             print(Data)
 
+            # OBTENER DATOS GRPC
             request = self.prototype.Data(**Data)
+            # INIALIZAR METADATA
+            metadata = []
 
+            # VALIDAR SI EXISTE AUTHORIZACION
+            if data['authorization']:
+                metadata.append(('access_token', data['authorization']))
+
+            # INICIALIZAR CANAL
             stub = self.protoRPC.DataProcessorStub(self.channel)
 
-            response = stub.PostData(request)
+            # CONSULTA GRPC Y OBTENCION DE RESPUESTA
+            response = stub.PostData(request=request, metadata=metadata)
 
             return response
 
@@ -31,6 +43,7 @@ class grpcClient(JsonResponse):
         except ValueError:
             self.throwException('value_error')
 
+    # METODO GET GRPC
     def get(self, **data):
 
         try:
@@ -54,6 +67,7 @@ class grpcClient(JsonResponse):
             print(e)
             self.throwException("value_error")
 
+    # METODO PUT GRPC
     def put(self, **Data):
 
         try:
@@ -61,10 +75,13 @@ class grpcClient(JsonResponse):
             print(Data)
 
             request = self.prototype.Data(**Data)
+            metadata = []
+            if data['authorization']:
+                metadata.append(('access_token', data['authorization']))
 
             stub = self.protoRPC.DataProcessorStub(self.channel)
 
-            response = stub.PutData(request)
+            response = stub.PutData(request=request, metadata=metadata)
 
             return response
 
@@ -76,6 +93,7 @@ class grpcClient(JsonResponse):
         except ValueError:
             self.throwException('value_error')
 
+    # METODO DELETE GRPC
     def delete(self, **Data):
 
         try:
@@ -83,10 +101,13 @@ class grpcClient(JsonResponse):
             print(Data)
 
             request = self.prototype.Data(**Data)
+            metadata = []
+            if data['authorization']:
+                metadata.append(('access_token', data['authorization']))
 
             stub = self.protoRPC.DataProcessorStub(self.channel)
 
-            response = stub.DeleteData(request)
+            response = stub.DeleteData(request=request, metadata=metadata)
 
             return response
 

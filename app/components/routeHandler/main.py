@@ -11,27 +11,35 @@ class routeHandler(Resource, JsonResponse):
     def operation(self, url, method):
         try:
             print('Enter Routing')
+
+            #Se toman las rutas del sistema
             ROUTING = self.ROUTING
+
+            #Inicializar la variable de authorization
             authorization = None
+
+            #Si existe el header de Authorization lo asigna a la variable authorization
             if 'Authorization' in request.headers:
                 authorization = request.headers['Authorization']
 
             print('VERIFY ROUTE')
+            #VERIFICA RUTA
             if url in ROUTING:
 
                 print('Start Client')
-
+                #INICIA EL CLIENTE GRPC
                 client = grpcClient(
                     ROUTING[url]['PROTO'], ROUTING[url]['PROTO_RPC'], ROUTING[url]['HOST']
                 )
 
                 print('Get Client')
-
+                
+                #VERIFICA EL METODO CORRESPONDIENTE
                 if method == 'GET':
                     response = client.get(authorization=authorization)
 
                 if method == 'POST':
-
+                    #ASIGNA DATA DEL REQUEST
                     data = json.loads(request.data.decode())
 
                     #form = ROUTING[route]['VALIDATOR'](request.data)
@@ -66,6 +74,7 @@ class routeHandler(Resource, JsonResponse):
         except:
             raise
 
+    #METODO GET API
     def get(self, route):
         try:
             print('enter get function')
@@ -73,18 +82,21 @@ class routeHandler(Resource, JsonResponse):
         except:
             raise
 
+    #METODO POST API
     def post(self, route):
         try:
             return self.operation(route, 'POST')
         except:
             raise
 
+    #METODO PUT API
     def put(self, route):
         try:
             return self.operation(route, 'PUT')
         except:
             raise
 
+    #METODO DELETE API
     def delete(self, route):
         try:
             return self.operation(route, 'DELETE')
