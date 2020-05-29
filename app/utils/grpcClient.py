@@ -24,9 +24,11 @@ class grpcClient(JsonResponse):
             return response
 
         except grpc.RpcError as e:
-            print(e.details())
+
+            ex = e.details()
+            print(ex)
             status_code = e.code()
-            self.throwException(status_code.name)
+            self.throwException(ex)
         except ValueError:
             self.throwException('value_error')
 
