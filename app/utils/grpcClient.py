@@ -3,7 +3,6 @@ from .jsonResponse import JsonResponse
 
 # Cliente GRPC
 
-
 class grpcClient(JsonResponse):
 
     # INICIALIZADOR DEL CLIENTE
@@ -24,8 +23,9 @@ class grpcClient(JsonResponse):
             metadata = []
 
             # VALIDAR SI EXISTE AUTHORIZACION
-            if data['authorization']:
-                metadata.append(('access_token', data['authorization']))
+            
+            #if Data['authorization']:
+            #   metadata.append(('access_token', Data['authorization']))
 
             # INICIALIZAR CANAL
             stub = self.protoRPC.DataProcessorStub(self.channel)

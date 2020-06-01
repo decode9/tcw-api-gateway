@@ -35,6 +35,7 @@ def not_found(error):
 #from app.mod_auth.controllers import mod_auth as auth_module
 
 routeHandler.ROUTING = ROUTING
+
 # Register blueprint(s)
 api.add_resource(routeHandler, '/api/<route>')
 
