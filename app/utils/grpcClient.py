@@ -3,34 +3,36 @@ from .jsonResponse import JsonResponse
 
 # Cliente GRPC
 
-
 class grpcClient(JsonResponse):
 
     # INICIALIZADOR DEL CLIENTE
     def __init__(self, prot, protRPC, host):
         self.prototype = prot
         self.protoRPC = protRPC
-        self.host = host
+        self.channel = grpc.insecure_channel(host)
 
     # METODO POST GRPC
     def post(self, **Data):
 
         try:
-            channel = grpc.insecure_channel(self.host)
             print(Data)
 
             # OBTENER DATOS GRPC
-            request = self.prototype.Data(**Data)
+            
             # INIALIZAR METADATA
             metadata = []
 
             # VALIDAR SI EXISTE AUTHORIZACION
+            
+            if 'authorization' in Data.keys():
+                if Data['authorization']:
+                    metadata.append(('access_token', Data['authorization']))
+                del Data['authorization']
 
-            # if Data['authorization']:
-            #   metadata.append(('access_token', Data['authorization']))
+            request = self.prototype.Data(**Data['request'])
 
             # INICIALIZAR CANAL
-            stub = self.protoRPC.DataProcessorStub(channel)
+            stub = self.protoRPC.DataProcessorStub(self.channel)
 
             # CONSULTA GRPC Y OBTENCION DE RESPUESTA
             response = stub.PostData(request=request, metadata=metadata)
@@ -49,14 +51,15 @@ class grpcClient(JsonResponse):
     def get(self, **data):
 
         try:
-            channel = grpc.insecure_channel(self.host)
 
             request = self.prototype.Empty()
             metadata = []
-            if data['authorization']:
-                metadata.append(('access_token', data['authorization']))
+            if 'authorization' in data.keys():
+                if data['authorization']:
+                    metadata.append(('access_token', data['authorization']))
+                del data['authorization']
 
-            stub = self.protoRPC.DataProcessorStub(channel)
+            stub = self.protoRPC.DataProcessorStub(self.channel)
 
             response = stub.GetData(request=request, metadata=metadata)
 
@@ -74,16 +77,19 @@ class grpcClient(JsonResponse):
     def put(self, **Data):
 
         try:
-            channel = grpc.insecure_channel(self.host)
 
             print(Data)
 
-            request = self.prototype.Data(**Data)
+            
             metadata = []
-            if data['authorization']:
-                metadata.append(('access_token', data['authorization']))
+            if 'authorization' in Data.keys():
+                if Data['authorization']:
+                    metadata.append(('access_token', Data['authorization']))
+                del Data['authorization']
 
-            stub = self.protoRPC.DataProcessorStub(channel)
+            request = self.prototype.Data(**Data['request'])
+
+            stub = self.protoRPC.DataProcessorStub(self.channel)
 
             response = stub.PutData(request=request, metadata=metadata)
 
@@ -101,16 +107,19 @@ class grpcClient(JsonResponse):
     def delete(self, **Data):
 
         try:
-            channel = grpc.insecure_channel(self.host)
 
             print(Data)
 
-            request = self.prototype.Data(**Data)
+            
             metadata = []
-            if data['authorization']:
-                metadata.append(('access_token', data['authorization']))
+            if 'authorization' in Data.keys():
+                if Data['authorization']:
+                    metadata.append(('access_token', Data['authorization']))
+                del Data['authorization']
 
-            stub = self.protoRPC.DataProcessorStub(channel)
+            request = self.prototype.Data(**Data['request'])
+
+            stub = self.protoRPC.DataProcessorStub(self.channel)
 
             response = stub.DeleteData(request=request, metadata=metadata)
 

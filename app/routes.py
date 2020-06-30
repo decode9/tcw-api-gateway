@@ -1,14 +1,30 @@
 # IMPORTACION DE PROTOCOL BUFFERS
 #from .protobuffers import countries_pb2_grpc, countries_pb2, auth_pb2, auth_pb2_grpc, register_pb2, register_pb2_grpc
-from .controllers import userController
+from .controllers import userController, authController
 
 ROUTING = {
-    'user': {
+    'users': {
         'GET':{
             'FUNCTION': userController().get_method
         },
         'POST':{
             'FUNCTION': userController().post_method
+        },
+        'PUT':{
+            'FUNCTION': userController().put_method
+        },
+        'DELETE':{
+            'FUNCTION': userController().delete_method
+        }
+    },
+    'auth': {
+        'POST': {
+            'FUNCTION': authController().auth_method
+        }
+    },
+    'register': {
+        'POST':{
+            'FUNCTION': authController().register_method
         }
     }
     #'users': {  # NOMBRE DE LA RUTA

@@ -3,19 +3,17 @@ from ...protobuffers import user_pb2_grpc, user_pb2
 from google.protobuf.json_format import MessageToDict
 
 
-class userController(grpcClient):
+class userController():
 
     def __init__(self):
-        self.prototype = user_pb2
-        self.protoRPC = user_pb2_grpc
-        self.host = 'localhost:5300'
+        self.userClient = grpcClient(user_pb2, user_pb2_grpc, 'localhost:5300')
 
     def get_method(self, **request):
 
         print(request)
 
         grpcData = MessageToDict(
-            self.get(authorization=None))
+            self.userClient.get(**request))
 
         return grpcData
 
@@ -23,6 +21,24 @@ class userController(grpcClient):
 
         print(request)
 
-        grpcData = MessageToDict(self.post(**request))
+        grpcData = MessageToDict(self.userClient.post(**request))
 
         return grpcData
+
+    def put_method(self, **request):
+
+        print(request)
+
+        grpcData = MessageToDict(self.userClient.put(**request))
+
+        return grpcData
+
+    def delete_method(self, **request):
+
+        print(request)
+
+        grpcData = MessageToDict(self.userClient.delete(**request))
+
+        return grpcData
+    
+

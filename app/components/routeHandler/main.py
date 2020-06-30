@@ -28,7 +28,7 @@ class routeHandler(Resource, JsonResponse):
                 if request.data:
                     data['request'] = json.loads(request.data.decode())
                 
-                if ROUTING[url][method]:
+                if method in ROUTING[url].keys():
                     response = ROUTING[url][method]['FUNCTION'](**data)
                     return self.apiResponse(response)
 
